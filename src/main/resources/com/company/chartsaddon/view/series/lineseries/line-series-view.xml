@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://lineSeriesView.title">
+    <data>
+        <collection id="dateValueDc"
+                    class="com.company.chartsaddon.entity.DateValue">
+            <fetchPlan extends="_local"/>
+            <loader id="dateValueLoader">
+                <query>
+                    <![CDATA[select e from DateValue e order by e.date]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout>
+        <numberField label="Smooth" id="smoothField" min="0.0" max="1.0">
+            <suffix>
+                <button id="applySmooth" themeNames="tertiary-inline icon" icon="CHECK"/>
+            </suffix>
+        </numberField>
+    </layout>
+</view>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view" xmlns:charts="http://jmix.io/schema/charts/ui"
+      title="msg://BlankView.title">
+    <data readOnly="true">
+        <collection id="transportDc" class="com.company.chartsaddon.entity.TransportCount"
+                    fetchPlan="_local">
+            <loader id="transportDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from TransportCount e order by e.year]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <timer id="timer"
+               delay="2000"
+               autostart="false"
+               repeating="true"/>
+    </facets>
+    <layout>
+        <charts:chart id="chart" width="100%" height="100%">
+        </charts:chart>
+    </layout>
+</view>

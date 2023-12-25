@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/flowui/menu">
+
+    <menu id="application" title="msg://com.company.chartsaddon/menu.application.title" opened="true">
+        <item view="User.list" title="msg://com.company.chartsaddon.view.user/UserListView.title"/>
+        <item view="BlankView" title="msg://com.company.chartsaddon.view.blank/BlankView.title"/>
+        <item view="IncrementalListView" title="Incremental List"/>
+        <item view="NativeJsonView" title="Native Json"/>
+        <menu id="series" description="msg://com.company.chartsaddon/menu_config.series.description"
+              title="msg://com.company.chartsaddon/menu_config.series.title">
+            <item view="LineSeriesView"
+                  title="msg://com.company.chartsaddon.view.series.lineseries/lineSeriesView.title"/>
+            <item view="BarSeriesView" title="msg://com.company.chartsaddon.view.series.barseries/barSeries.title"/>
+            <item view="PieSeriesView" title="msg://com.company.chartsaddon.view.series.pieseries/pieSeries.title"/>
+            <item view="ScatterSeriesView" title="msg://com.company.chartsaddon.view.series.scatterseries/scatterSeries.title"/>
+            <item view="RadarSeriesView" title="msg://com.company.chartsaddon.view.series.radarseries/radarSeries.title"/>
+            <item view="CandlestickSeriesView"
+                  title="msg://com.company.chartsaddon.view.series.candlestickseries/candlestickSeries.title"/>
+            <item view="FunnelSeriesView"
+                  title="msg://com.company.chartsaddon.view.series.funnelseries/funnelSeries.title"/>
+            <item view="GaugeSeriesView" title="msg://com.company.chartsaddon.view.series.gaugeseries/gaugeSeries.title"/>
+        </menu>
+    </menu>
+
+</menu-config>
