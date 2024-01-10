@@ -12,10 +12,7 @@ import io.jmix.chartsflowui.kit.component.model.DataSet;
 import io.jmix.chartsflowui.kit.component.model.Grid;
 import io.jmix.chartsflowui.kit.component.model.Title;
 import io.jmix.chartsflowui.kit.component.model.Tooltip;
-import io.jmix.chartsflowui.kit.component.model.axis.AbstractAxis;
-import io.jmix.chartsflowui.kit.component.model.axis.AxisType;
-import io.jmix.chartsflowui.kit.component.model.axis.XAxis;
-import io.jmix.chartsflowui.kit.component.model.axis.YAxis;
+import io.jmix.chartsflowui.kit.component.model.axis.*;
 import io.jmix.chartsflowui.kit.component.model.datazoom.InsideDataZoom;
 import io.jmix.chartsflowui.kit.component.model.datazoom.SliderDataZoom;
 import io.jmix.chartsflowui.kit.component.model.series.*;
@@ -125,11 +122,11 @@ public class CandlestickSeriesView extends StandardView {
                 new XAxis()
                         .withBoundaryGap(false)
                         .withAxisLine(
-                                new AbstractAxis.AxisLine()
+                                new AxisLine()
                                         .withOnZero(false)
                         )
                         .withSplitLine(
-                                new AbstractAxis.SplitLine()
+                                new SplitLine()
                                         .withShow(false)
                         )
                         .withMin("dataMin")
@@ -141,19 +138,19 @@ public class CandlestickSeriesView extends StandardView {
                         .withGridIndex(1)
                         .withBoundaryGap(false)
                         .withAxisLine(
-                                new AbstractAxis.AxisLine()
+                                new AxisLine()
                                         .withOnZero(false)
                         )
                         .withAxisTick(
-                                new AbstractAxis.AxisTick()
+                                new AxisTick()
                                         .withShow(false)
                         )
                         .withSplitLine(
-                                new AbstractAxis.SplitLine()
+                                new SplitLine()
                                         .withShow(false)
                         )
                         .withAxisLabel(
-                                new AbstractAxis.AxisLabel()
+                                new AxisLabel()
                                         .withShow(false)
                         )
                         .withMin("dataMin")
@@ -164,7 +161,7 @@ public class CandlestickSeriesView extends StandardView {
                 new YAxis()
                         .withScale(true)
                         .withSplitArea(
-                                new AbstractAxis.SplitArea()
+                                new SplitArea()
                                         .withShow(true)
                         )
         );
@@ -175,19 +172,19 @@ public class CandlestickSeriesView extends StandardView {
                         .withGridIndex(1)
                         .withSplitNumber(2)
                         .withAxisLabel(
-                                new AbstractAxis.AxisLabel()
+                                new AxisLabel()
                                         .withShow(false)
                         )
                         .withAxisLine(
-                                new AbstractAxis.AxisLine()
+                                new AxisLine()
                                         .withShow(false)
                         )
                         .withAxisTick(
-                                new AbstractAxis.AxisTick()
+                                new AxisTick()
                                         .withShow(false)
                         )
                         .withSplitLine(
-                                new AbstractAxis.SplitLine()
+                                new SplitLine()
                                         .withShow(false)
                         )
         );

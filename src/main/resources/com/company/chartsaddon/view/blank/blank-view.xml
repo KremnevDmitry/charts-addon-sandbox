@@ -19,7 +19,28 @@
                repeating="true"/>
     </facets>
     <layout>
+        <hbox padding="false">
+            <button id="removeButton" text="Remove data" icon="MINUS"/>
+            <button id="addDataButton" text="Add data" icon="PLUS"/>
+            <button id="startStopDataGen"/>
+        </hbox>
         <charts:chart id="chart" width="100%" height="100%">
+            <charts:title text="My First chart"
+                          subtext="Go to google"
+                          sublink="https://google.com"
+                          right="10%"/>
+            <charts:legend/>
+            <charts:tooltip/>
+            <charts:xAxes>
+                <charts:xAxis/>
+            </charts:xAxes>
+            <charts:yAxes>
+                <charts:yAxis/>
+            </charts:yAxes>
+            <charts:dataSet>
+                <charts:source dataContainer="transportDc" categoryField="year"
+                               valueFields="cars, motorcycles, bicycles"/>
+            </charts:dataSet>
         </charts:chart>
     </layout>
 </view>

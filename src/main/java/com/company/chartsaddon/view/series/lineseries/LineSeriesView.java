@@ -33,65 +33,14 @@ public class LineSeriesView extends StandardView {
     @ViewComponent
     protected CollectionContainer<DateValue> dateValueDc;
     @ViewComponent
-    private JmixNumberField smoothField;
+    protected Chart chart;
 
     @Autowired
     protected UiComponents uiComponents;
 
-    protected Chart chart;
-    protected LineSeries series;
-
-    @Subscribe
-    protected void onInit(InitEvent event) {
-        chart = uiComponents.create(Chart.class);
-
-        chart.setWidthFull();
-        chart.setHeightFull();
-
-        chart
-                .withXAxis(new XAxis())
-                .withYAxis(new YAxis())
-                .withDataSet(createDataSet())
-                .withSeries(createLineSeries())
-                .withTooltip(createTooltip())
-                .withDataZoom(
-                        new SliderDataZoom()
-                                .withOrientation(Orientation.HORIZONTAL)
-                )
-                .withDataZoom(new SliderDataZoom()
-                        .withOrientation(Orientation.VERTICAL)
-                        .withLeft("7%"))
-                .withDataZoom(new InsideDataZoom());
-
-        getContent().add(chart);
-    }
-
-    protected Tooltip createTooltip() {
-        return new Tooltip()
-                .withTrigger(Tooltip.Trigger.AXIS);
-    }
-
-    protected LineSeries createLineSeries() {
-        series = new LineSeries()
-                .withSymbol(HasSymbols.SymbolType.NONE);
-        return series;
-    }
-
-    protected DataSet createDataSet() {
-        return new DataSet()
-                .withSource(
-                        new DataSet.Source<EntityDataItem>()
-                                .withCategoryField("date")
-                                .withValueField("value")
-                                .withDataProvider(new ContainerChartItems<>(dateValueDc))
-                );
-    }
-
     @Subscribe(id = "applySmooth", subject = "clickListener")
     public void onApplySmoothClick(final ClickEvent<JmixButton> event) {
-        Double value = smoothField.getValue();
-        if (0 <= value && value <= 1.0) {
-            series.setSmooth(value);
-        }
+        LineSeries line = chart.getSeries("line");
+        line.setSmooth(line.getSmooth() != null && line.getSmooth() > 0.49 ? 0.0 : 0.5);
     }
 }

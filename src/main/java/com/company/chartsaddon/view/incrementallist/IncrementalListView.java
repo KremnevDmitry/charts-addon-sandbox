@@ -14,12 +14,13 @@ import io.jmix.chartsflowui.kit.component.model.axis.YAxis;
 import io.jmix.chartsflowui.kit.component.model.legend.Legend;
 import io.jmix.chartsflowui.kit.component.model.series.BarSeries;
 import io.jmix.chartsflowui.kit.component.model.series.Encode;
-import io.jmix.chartsflowui.kit.component.model.series.LineSeries;
-import io.jmix.chartsflowui.kit.data.chart.DataItem;
 import io.jmix.chartsflowui.kit.data.chart.ListChartItems;
 import io.jmix.flowui.UiComponents;
 import io.jmix.flowui.kit.component.button.JmixButton;
-import io.jmix.flowui.view.*;
+import io.jmix.flowui.view.StandardView;
+import io.jmix.flowui.view.Subscribe;
+import io.jmix.flowui.view.ViewController;
+import io.jmix.flowui.view.ViewDescriptor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;

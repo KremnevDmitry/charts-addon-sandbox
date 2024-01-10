@@ -48,7 +48,7 @@ public class BlankView extends StandardView {
     protected Chart chart;
     @ViewComponent
     protected Timer timer;
-
+    @ViewComponent
     protected JmixButton startStopDataGen;
 
     protected Integer baseYear = 2013;
@@ -57,75 +57,14 @@ public class BlankView extends StandardView {
 
     @Subscribe
     protected void onInit(InitEvent event) {
-        JmixSplitLayout jmixSplitLayout = uiComponents.create(JmixSplitLayout.class);
-        jmixSplitLayout.setWidthFull();
-        jmixSplitLayout.setHeightFull();
-
-        chart.setWidthFull();
-        chart.setHeightFull();
-
         chart
-                .withTitle(createTitle())
-                .withLegend(new Legend())
-                .withTooltip(new Tooltip())
-                .withXAxis(new XAxis())
-                .withYAxis(new YAxis())
-                .withDataSet(createDataSet())
                 .withSeries(
                         createBarSeries("Cars sells"),
                         createBarSeries("Motorcycles sells"),
                         createBarSeries("Bicycles sells")
                 );
 
-        jmixSplitLayout.addToPrimary(createPrimaryContent());
-        jmixSplitLayout.addToSecondary(new Div());
-        getContent().add(jmixSplitLayout);
-    }
-
-    protected Title createTitle() {
-        return new Title("My First chart")
-                .withSubtext("Go to google")
-                .withSublink("https://google.com")
-                .withRight("10%");
-    }
-
-    protected Component createPrimaryContent() {
-        VerticalLayout verticalLayout = uiComponents.create(VerticalLayout.class);
-        verticalLayout.setPadding(false);
-
-        HorizontalLayout horizontalLayout = uiComponents.create(HorizontalLayout.class);
-        horizontalLayout.setPadding(false);
-
-        JmixButton addDataButton = uiComponents.create(JmixButton.class);
-        addDataButton.setText("Add data");
-        addDataButton.setIcon(VaadinIcon.PLUS.create());
-        addDataButton.addClickListener(__ -> addData());
-
-        JmixButton removeButton = uiComponents.create(JmixButton.class);
-        removeButton.setText("Remove data");
-        removeButton.setIcon(VaadinIcon.MINUS.create());
-        removeButton.addClickListener(__ -> removeData());
-
-        startStopDataGen = uiComponents.create(JmixButton.class);
-        startStopDataGen.addClickListener(this::timerButtonClickListener);
         prepareTimerButtonToStart();
-
-        horizontalLayout.add(removeButton, addDataButton, startStopDataGen);
-        verticalLayout.add(horizontalLayout, chart);
-
-        return verticalLayout;
-    }
-
-    protected void timerButtonClickListener(ClickEvent<Button> event) {
-        if (timerStarted) {
-            timer.stop();
-            prepareTimerButtonToStart();
-        } else {
-            timer.start();
-            prepareTimerButtonToStop();
-        }
-
-        timerStarted = !timerStarted;
     }
 
     protected void prepareTimerButtonToStart() {
@@ -162,18 +101,31 @@ public class BlankView extends StandardView {
         transportDc.getMutableItems().remove(0);
     }
 
-    protected DataSet createDataSet() {
-        return new DataSet()
-                .withSource(
-                        new DataSet.Source<EntityDataItem>()
-                                .withDataProvider(new ContainerChartItems<>(transportDc))
-                                .withCategoryField("year")
-                                .withValueFields("cars", "motorcycles", "bicycles")
-                );
-    }
-
     protected BarSeries createBarSeries(String name) {
         return new BarSeries()
                 .withName(name);
+    }
+
+    @Subscribe(id = "addDataButton", subject = "clickListener")
+    public void onAddDataButtonClick(final ClickEvent<JmixButton> event) {
+        addData();
+    }
+
+    @Subscribe(id = "removeButton", subject = "clickListener")
+    public void onRemoveButtonClick(final ClickEvent<JmixButton> event) {
+        removeData();
+    }
+
+    @Subscribe(id = "startStopDataGen", subject = "clickListener")
+    public void onStartStopDataGenClick(final ClickEvent<JmixButton> event) {
+        if (timerStarted) {
+            timer.stop();
+            prepareTimerButtonToStart();
+        } else {
+            timer.start();
+            prepareTimerButtonToStop();
+        }
+
+        timerStarted = !timerStarted;
     }
 }
