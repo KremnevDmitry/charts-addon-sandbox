@@ -12,10 +12,7 @@ import io.jmix.chartsflowui.kit.component.model.legend.Legend;
 import io.jmix.chartsflowui.kit.component.model.series.RadarSeries;
 import io.jmix.chartsflowui.kit.data.chart.ListChartItems;
 import io.jmix.flowui.UiComponents;
-import io.jmix.flowui.view.StandardView;
-import io.jmix.flowui.view.Subscribe;
-import io.jmix.flowui.view.ViewController;
-import io.jmix.flowui.view.ViewDescriptor;
+import io.jmix.flowui.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
@@ -25,56 +22,11 @@ import java.util.Map;
 @ViewDescriptor("radar-series-view.xml")
 public class RadarSeriesView extends StandardView {
 
-    @Autowired
-    private UiComponents uiComponents;
+    @ViewComponent
+    protected Chart chart;
 
     @Subscribe
     protected void onInit(InitEvent event) {
-        Chart chart = uiComponents.create(Chart.class);
-
-        chart.setWidthFull();
-        chart.setHeightFull();
-
-        chart.setTitle(
-                new Title()
-                        .withText("Basic Radar")
-        );
-
-        chart.setLegend(
-                new Legend()
-        );
-
-        chart.setTooltip(
-                new Tooltip()
-        );
-
-        chart.setRadar(
-                new Radar()
-                        .withIndicators(
-                                new Radar.Indicator()
-                                        .withName("Russia")
-                                        .withMax(300),
-                                new Radar.Indicator()
-                                        .withName("Ireland")
-                                        .withMax(300),
-                                new Radar.Indicator()
-                                        .withName("Germany")
-                                        .withMax(300),
-                                new Radar.Indicator()
-                                        .withName("Australia")
-                                        .withMax(300),
-                                new Radar.Indicator()
-                                        .withName("Austria")
-                                        .withMax(300),
-                                new Radar.Indicator()
-                                        .withName("UK")
-                                        .withMax(300),
-                                new Radar.Indicator()
-                                        .withName("Belgium")
-                                        .withMax(300)
-                        )
-        );
-
         chart.setDataSet(
                 new DataSet()
                         .withSource(
@@ -97,12 +49,5 @@ public class RadarSeriesView extends StandardView {
                                         )
                         )
         );
-
-        chart.addSeries(
-                new RadarSeries()
-                        .withName("Litres of beer per year")
-        );
-
-        getContent().add(chart);
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:chart="http://jmix.io/schema/charts/ui"
       title="msg://scatterSeries.title">
     <data readOnly="true">
         <collection id="coordinateDc" class="com.company.chartsaddon.entity.Coordinate"
@@ -12,5 +13,21 @@
     </facets>
     <layout>
         <checkbox id="effect" label="Add effect"/>
+        <chart:chart id="chart" width="100%" height="100%">
+            <chart:tooltip/>
+            <chart:xAxes>
+                <chart:xAxis/>
+            </chart:xAxes>
+            <chart:yAxes>
+                <chart:yAxis/>
+            </chart:yAxes>
+            <chart:dataSet>
+                <chart:source dataContainer="coordinateDc" categoryField="x" valueFields="y"/>
+            </chart:dataSet>
+
+            <chart:series>
+                <chart:scatter id="scatterSeries" symbolSize="20"/>
+            </chart:series>
+        </chart:chart>
     </layout>
 </view>

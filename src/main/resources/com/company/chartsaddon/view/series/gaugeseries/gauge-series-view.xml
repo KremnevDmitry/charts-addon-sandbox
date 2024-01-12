@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:charts="http://jmix.io/schema/charts/ui"
       title="msg://gaugeSeries.title">
     <layout>
+        <charts:chart>
+            <charts:tooltip formatter="{a} &lt;br/&gt;{b} : {c}%"/>
+
+            <charts:series>
+                <charts:gauge name="Pressure">
+                    <charts:data>
+                        <charts:dataItem value="50" name="SCORE"/>
+                    </charts:data>
+                    <charts:detail formatter="{value}"/>
+                </charts:gauge>
+            </charts:series>
+        </charts:chart>
     </layout>
 </view>

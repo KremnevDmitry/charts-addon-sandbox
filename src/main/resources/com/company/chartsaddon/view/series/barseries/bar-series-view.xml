@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:chart="http://jmix.io/schema/charts/ui"
       title="msg://barSeries.title">
     <data readOnly="true">
         <collection id="transportDc" class="com.company.chartsaddon.entity.TransportCount"
@@ -16,5 +17,17 @@
     </facets>
     <layout>
         <button id="areaStyle" text="Change areaStyle" icon="CALC_BOOK"/>
+        <chart:chart id="chart" width="100%" height="100%">
+            <chart:yAxes>
+                <chart:yAxis/>
+            </chart:yAxes>
+
+            <chart:dataSet>
+                <chart:source dataContainer="transportDc" categoryField="year" valueFields="cars motorcycles bicycles"/>
+            </chart:dataSet>
+
+            <chart:tooltip trigger="AXIS"/>
+            <chart:legend/>
+        </chart:chart>
     </layout>
 </view>

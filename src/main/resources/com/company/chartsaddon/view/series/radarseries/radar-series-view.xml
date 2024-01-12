@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:charts="http://jmix.io/schema/charts/ui"
       title="msg://radarSeries.title">
     <layout>
+        <charts:chart id="chart" width="100%" height="100%">
+            <charts:title text="Basic Radar"/>
+            <charts:legend/>
+            <charts:tooltip/>
+
+            <charts:radar>
+                <charts:indicators>
+                    <charts:indicator name="Russia" max="300"/>
+                    <charts:indicator name="Ireland" max="300"/>
+                    <charts:indicator name="Germany" max="300"/>
+                    <charts:indicator name="Australia" max="300"/>
+                    <charts:indicator name="Austria" max="300"/>
+                    <charts:indicator name="UK" max="300"/>
+                    <charts:indicator name="Belgium" max="300"/>
+                </charts:indicators>
+            </charts:radar>
+
+            <charts:series>
+                <charts:radar name="Litres of beer per year"/>
+            </charts:series>
+        </charts:chart>
     </layout>
 </view>
